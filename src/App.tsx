@@ -42,7 +42,6 @@ function App() {
       </Section>
       <Section>
         <Calendar
-          weddingDate={invitation.weddingDate}
           weddingDateDisplay={invitation.weddingDateDisplay}
           venueName={invitation.venue.name}
         />
@@ -60,7 +59,7 @@ function App() {
         <Gallery images={invitation.galleryImages} />
       </Section>
       <Section>
-        <Location venue={invitation.venue} />
+        <Location venue={invitation.venue} kakaoMapUrl={invitation.externalLinks.kakaoMapUrl} />
       </Section>
       <Section>
         <Transportation

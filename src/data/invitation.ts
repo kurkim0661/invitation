@@ -6,7 +6,7 @@ export const invitation: Invitation = {
   groomName: '지환',
   brideName: '인화',
   greeting:
-    '언제나 손을 잡고 걷는 지금처럼\n앞으로의 모든 날도 함께 걸어가겠습니다.\n\n저희의 시작을 함께해 주시면 감사하겠습니다.',
+    '언제나 손을 잡고 걷는 지금처럼\n앞으로의 모든 날도 함께 걸어가겠습니다.\n저희의 시작을 함께해 주시면 감사하겠습니다.',
   weddingDate: '2026-07-11T17:00:00+09:00',
   weddingDateDisplay: '2026년 7월 11일 토요일 오후 5시',
   venue: {

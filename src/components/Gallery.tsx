@@ -11,8 +11,12 @@ export default function Gallery({ images }: GalleryProps) {
   const sortedImages = [...images].sort((a, b) => a.order - b.order);
 
   return (
-    <section className="px-8 py-12">
-      <h2 className="text-center font-serif text-[14px] tracking-[0.3em] text-text-light mb-8">
+    <section className="px-8 py-12 bg-white">
+      {/* GALLERY: Nelphim Italic, 72 x 20 */}
+      <h2
+        className="text-center font-script text-text-light mb-8 italic"
+        style={{ width: '72px', height: '20px', lineHeight: '20px', fontSize: '18px', margin: '0 auto 32px auto' }}
+      >
         GALLERY
       </h2>
       <div className="grid grid-cols-3 gap-1">
