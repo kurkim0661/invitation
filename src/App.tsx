@@ -41,7 +41,11 @@ function App() {
         />
       </Section>
       <Section>
-        <Calendar weddingDate={invitation.weddingDate} />
+        <Calendar
+          weddingDate={invitation.weddingDate}
+          weddingDateDisplay={invitation.weddingDateDisplay}
+          venueName={invitation.venue.name}
+        />
       </Section>
       <Section>
         <FamilyInfo
