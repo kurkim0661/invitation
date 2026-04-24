@@ -1,0 +1,15 @@
+{"timestamp":"2026-04-19T06:36:00.422Z","type":"watcher_start","cwd":"/Users/jihwankim/development/invitation","notify_script":"/opt/homebrew/lib/node_modules/oh-my-codex/dist/scripts/notify-hook.js","authority_only":false,"poll_ms":250,"effective_poll_ms":250,"idle_max_poll_ms":1000,"once":false,"parent_pid":90152,"pid_file":"/Users/jihwankim/development/invitation/.omx/state/notify-fallback.pid","max_lifetime_ms":21600000}
+{"timestamp":"2026-04-19T06:40:04.446Z","type":"fallback_notify","ok":true,"thread_id":"019da476-e1e6-7bf2-98b7-b51862bea43d","turn_id":"019da476-e246-7b53-9057-2315a997ad6c","file":"/Users/jihwankim/.codex/sessions/2026/04/19/rollout-2026-04-19T15-39-07-019da476-e1e6-7bf2-98b7-b51862bea43d.jsonl","reason":"sent"}
+{"timestamp":"2026-04-19T06:40:08.331Z","type":"fallback_notify","ok":true,"thread_id":"019da474-1cab-7f90-85bd-cd43c1afc66b","turn_id":"019da476-998b-7683-a0ef-42f7849dcf6b","file":"/Users/jihwankim/.codex/sessions/2026/04/19/rollout-2026-04-19T15-36-06-019da474-1cab-7f90-85bd-cd43c1afc66b.jsonl","reason":"sent"}
+{"timestamp":"2026-04-19T06:55:38.275Z","type":"fallback_notify","ok":true,"thread_id":"019da474-1cab-7f90-85bd-cd43c1afc66b","turn_id":"019da485-480e-7240-bc9c-429354784519","file":"/Users/jihwankim/.codex/sessions/2026/04/19/rollout-2026-04-19T15-36-06-019da474-1cab-7f90-85bd-cd43c1afc66b.jsonl","reason":"sent"}
+{"timestamp":"2026-04-19T07:22:20.982Z","type":"watcher_stop","signal":"SIGTERM","reason":"signal","parent_pid":91406,"pid_file":null}
+{"timestamp":"2026-04-19T07:49:29.420Z","type":"watcher_stop","signal":"SIGTERM","reason":"signal","parent_pid":91406,"pid_file":null}
+{"timestamp":"2026-04-19T07:59:04.417Z","type":"watcher_stop","signal":"SIGTERM","reason":"signal","parent_pid":91406,"pid_file":null}
+{"timestamp":"2026-04-19T08:27:14.707Z","type":"fallback_notify","ok":true,"thread_id":"019da4d9-7237-75d1-9382-5a4b323558e2","turn_id":"019da4d9-7294-7a40-a523-16465f34599d","file":"/Users/jihwankim/.codex/sessions/2026/04/19/rollout-2026-04-19T17-26-47-019da4d9-7237-75d1-9382-5a4b323558e2.jsonl","reason":"sent"}
+{"timestamp":"2026-04-19T09:21:37.433Z","type":"watcher_stop","signal":"SIGTERM","reason":"signal","parent_pid":91406,"pid_file":null}
+{"timestamp":"2026-04-19T09:21:43.933Z","type":"watcher_stop","signal":"SIGTERM","reason":"signal","parent_pid":91406,"pid_file":null}
+{"timestamp":"2026-04-19T09:21:49.698Z","type":"watcher_stop","signal":"SIGTERM","reason":"signal","parent_pid":91406,"pid_file":null}
+{"timestamp":"2026-04-19T09:21:55.321Z","type":"watcher_stop","signal":"SIGTERM","reason":"signal","parent_pid":91406,"pid_file":null}
+{"timestamp":"2026-04-19T09:24:44.420Z","type":"watcher_stop","signal":"SIGTERM","reason":"signal","parent_pid":91406,"pid_file":null}
+{"timestamp":"2026-04-19T09:24:50.268Z","type":"watcher_stop","signal":"SIGTERM","reason":"signal","parent_pid":91406,"pid_file":null}
+{"timestamp":"2026-04-19T12:36:00.628Z","type":"watcher_stop","signal":null,"reason":"max_lifetime_exceeded","parent_pid":90152,"pid_file":"/Users/jihwankim/development/invitation/.omx/state/notify-fallback.pid"}
