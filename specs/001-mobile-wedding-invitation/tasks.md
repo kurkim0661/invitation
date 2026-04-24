@@ -19,11 +19,11 @@
 
 **Purpose**: Initialize React + Vite + TypeScript + Tailwind CSS project
 
-- [ ] T001 Initialize Vite project with React and TypeScript template, install core dependencies (react, react-dom, typescript) in project root
-- [ ] T002 Install and configure Tailwind CSS 3 with PostCSS and autoprefixer in tailwind.config.js and postcss.config.js
-- [ ] T003 [P] Create directory structure: src/components/, src/data/, src/hooks/, public/images/, public/fonts/
-- [ ] T004 [P] Create .env.example with VITE_KAKAO_MAP_API_KEY placeholder and add .env to .gitignore
-- [ ] T005 [P] Configure global styles with Tailwind directives and base font settings in src/index.css
+- [X] T001 Initialize Vite project with React and TypeScript template, install core dependencies (react, react-dom, typescript) in project root
+- [X] T002 Install and configure Tailwind CSS 3 with PostCSS and autoprefixer in tailwind.config.js and postcss.config.js
+- [X] T003 [P] Create directory structure: src/components/, src/data/, src/hooks/, public/images/, public/fonts/
+- [X] T004 [P] Create .env.example with VITE_KAKAO_MAP_API_KEY placeholder and add .env to .gitignore
+- [X] T005 [P] Configure global styles with Tailwind directives and base font settings in src/index.css
 
 ---
 
@@ -33,11 +33,11 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T006 Define all TypeScript interfaces (Invitation, Family, Contact, Venue, Transportation, TransportLine, Parking, GalleryImage, ExternalLinks) based on data-model.md in src/data/types.ts
-- [ ] T007 Create static invitation data with all wedding details (names, date, venue, families, contacts, transportation, gallery images, external links) in src/data/invitation.ts
-- [ ] T008 Create App.tsx shell that imports and renders all section components in Figma design order (Header → Greeting → Calendar → FamilyInfo → Rsvp → Gallery → Location → Transportation) in src/App.tsx
-- [ ] T009 [P] Set up main entry point with React root render in src/main.tsx
-- [ ] T010 [P] Add placeholder wedding images to public/images/ for development (main photo, gallery samples)
+- [X] T006 Define all TypeScript interfaces (Invitation, Family, Contact, Venue, Transportation, TransportLine, Parking, GalleryImage, ExternalLinks) based on data-model.md in src/data/types.ts
+- [X] T007 Create static invitation data with all wedding details (names, date, venue, families, contacts, transportation, gallery images, external links) in src/data/invitation.ts
+- [X] T008 Create App.tsx shell that imports and renders all section components in Figma design order (Header → Greeting → Calendar → FamilyInfo → Rsvp → Gallery → Location → Transportation) in src/App.tsx
+- [X] T009 [P] Set up main entry point with React root render in src/main.tsx
+- [X] T010 [P] Add placeholder wedding images to public/images/ for development (main photo, gallery samples)
 
 **Checkpoint**: Foundation ready — `npm run dev` shows empty section placeholders in correct order
 
@@ -51,11 +51,11 @@
 
 ### Implementation for User Story 1
 
-- [ ] T011 [P] [US1] Implement Header component: "Wedding Day" script font title, full-width main wedding photo, couple names "지환, 인화" in src/components/Header.tsx
-- [ ] T012 [P] [US1] Implement Greeting component: centered greeting text, wedding date "2026년 7월 11일 토요일 오후 5시", venue "노블발렌티 삼성" in src/components/Greeting.tsx
-- [ ] T013 [P] [US1] Implement Calendar component: July 2026 calendar grid with Sun-Sat headers, highlight day 11 with circle/background accent in src/components/Calendar.tsx
-- [ ] T014 [P] [US1] Implement FamilyInfo component: groom side "김동희ㆍ조진숙 의 장남 지환", bride side "강대연ㆍ장옥분 의 장녀 인화", and "연락하기" button placeholder in src/components/FamilyInfo.tsx
-- [ ] T015 [US1] Wire US1 components into App.tsx sections, verify all display correctly with Figma design matching in src/App.tsx
+- [X] T011 [P] [US1] Implement Header component: "Wedding Day" script font title, full-width main wedding photo, couple names "지환, 인화" in src/components/Header.tsx
+- [X] T012 [P] [US1] Implement Greeting component: centered greeting text, wedding date "2026년 7월 11일 토요일 오후 5시", venue "노블발렌티 삼성" in src/components/Greeting.tsx
+- [X] T013 [P] [US1] Implement Calendar component: July 2026 calendar grid with Sun-Sat headers, highlight day 11 with circle/background accent in src/components/Calendar.tsx
+- [X] T014 [P] [US1] Implement FamilyInfo component: groom side "김동희ㆍ조진숙 의 장남 지환", bride side "강대연ㆍ장옥분 의 장녀 인화", and "연락하기" button placeholder in src/components/FamilyInfo.tsx
+- [X] T015 [US1] Wire US1 components into App.tsx sections, verify all display correctly with Figma design matching in src/App.tsx
 
 **Checkpoint**: User Story 1 fully functional — 하객이 청첩장 메인 정보를 확인할 수 있음
 
@@ -69,11 +69,11 @@
 
 ### Implementation for User Story 2
 
-- [ ] T016 [P] [US2] Implement useClipboard hook with navigator.clipboard.writeText and document.execCommand('copy') fallback in src/hooks/useClipboard.ts
-- [ ] T017 [P] [US2] Implement Kakao Maps SDK loader: dynamically load script via VITE_KAKAO_MAP_API_KEY env var in src/hooks/useKakaoMap.ts
-- [ ] T018 [US2] Implement Location component: "LOCATION" title, venue name, address with Copy button (uses useClipboard), embedded Kakao Map with marker at venue coordinates in src/components/Location.tsx
-- [ ] T019 [US2] Implement Transportation component: subway section (9호선 봉은사역 4번출구 도보4분, 2호선 삼성역 8번출구 도보15분), bus section (3417번, 강남01번), shuttle section (봉은사역 5번출구 5분간격), parking section (본관 100대, 별관 200대) with icons and walk time indicators in src/components/Transportation.tsx
-- [ ] T020 [US2] Wire US2 components into App.tsx, verify map loads and address copy works on mobile in src/App.tsx
+- [X] T016 [P] [US2] Implement useClipboard hook with navigator.clipboard.writeText and document.execCommand('copy') fallback in src/hooks/useClipboard.ts
+- [X] T017 [P] [US2] Implement Kakao Maps SDK loader: dynamically load script via VITE_KAKAO_MAP_API_KEY env var in src/hooks/useKakaoMap.ts
+- [X] T018 [US2] Implement Location component: "LOCATION" title, venue name, address with Copy button (uses useClipboard), embedded Kakao Map with marker at venue coordinates in src/components/Location.tsx
+- [X] T019 [US2] Implement Transportation component: subway section (9호선 봉은사역 4번출구 도보4분, 2호선 삼성역 8번출구 도보15분), bus section (3417번, 강남01번), shuttle section (봉은사역 5번출구 5분간격), parking section (본관 100대, 별관 200대) with icons and walk time indicators in src/components/Transportation.tsx
+- [X] T020 [US2] Wire US2 components into App.tsx, verify map loads and address copy works on mobile in src/App.tsx
 
 **Checkpoint**: User Story 2 fully functional — 하객이 오시는 길 정보를 모두 확인할 수 있음
 
@@ -87,8 +87,8 @@
 
 ### Implementation for User Story 3
 
-- [ ] T021 [US3] Implement Rsvp component: guidance text "축하의 마음으로 참석해주실 모든 분을 정중히 모시고자 하오니, 참석 여부를 알려주시면 감사하겠습니다", "참석 여부 전달하기" button that opens rsvpFormUrl from invitation data in new tab in src/components/Rsvp.tsx
-- [ ] T022 [US3] Wire Rsvp component into App.tsx between FamilyInfo and Gallery sections in src/App.tsx
+- [X] T021 [US3] Implement Rsvp component: guidance text "축하의 마음으로 참석해주실 모든 분을 정중히 모시고자 하오니, 참석 여부를 알려주시면 감사하겠습니다", "참석 여부 전달하기" button that opens rsvpFormUrl from invitation data in new tab in src/components/Rsvp.tsx
+- [X] T022 [US3] Wire Rsvp component into App.tsx between FamilyInfo and Gallery sections in src/App.tsx
 
 **Checkpoint**: User Story 3 fully functional — 참석 여부 버튼이 Google Form으로 정상 리다이렉트
 
@@ -102,9 +102,9 @@
 
 ### Implementation for User Story 4
 
-- [ ] T023 [US4] Install Swiper.js dependency (swiper) via npm
-- [ ] T024 [US4] Implement Gallery component: "GALLERY" title, photo grid layout from galleryImages data, tap to open fullscreen Swiper viewer with left/right swipe navigation and close button in src/components/Gallery.tsx
-- [ ] T025 [US4] Wire Gallery component into App.tsx, verify grid display and fullscreen swipe on mobile in src/App.tsx
+- [X] T023 [US4] Install Swiper.js dependency (swiper) via npm
+- [X] T024 [US4] Implement Gallery component: "GALLERY" title, photo grid layout from galleryImages data, tap to open fullscreen Swiper viewer with left/right swipe navigation and close button in src/components/Gallery.tsx
+- [X] T025 [US4] Wire Gallery component into App.tsx, verify grid display and fullscreen swipe on mobile in src/App.tsx
 
 **Checkpoint**: User Story 4 fully functional — 갤러리 사진 그리드 표시 및 풀스크린 스와이프 탐색 동작
 
@@ -118,8 +118,8 @@
 
 ### Implementation for User Story 5
 
-- [ ] T026 [US5] Implement ContactModal component: overlay modal with contact list (지환/신랑, 인화/신부, 김동희/신랑아버지, 조진숙/신랑어머니, 강대연/신부아버지, 장옥분/신부어머니), each with phone (tel:) and SMS (sms:) action buttons, close on X button or outside click in src/components/ContactModal.tsx
-- [ ] T027 [US5] Connect FamilyInfo "연락하기" button to open ContactModal with state management in src/components/FamilyInfo.tsx
+- [X] T026 [US5] Implement ContactModal component: overlay modal with contact list (지환/신랑, 인화/신부, 김동희/신랑아버지, 조진숙/신랑어머니, 강대연/신부아버지, 장옥분/신부어머니), each with phone (tel:) and SMS (sms:) action buttons, close on X button or outside click in src/components/ContactModal.tsx
+- [X] T027 [US5] Connect FamilyInfo "연락하기" button to open ContactModal with state management in src/components/FamilyInfo.tsx
 
 **Checkpoint**: User Story 5 fully functional — 연락하기 팝업에서 전화/문자 연결 동작
 
@@ -129,11 +129,11 @@
 
 **Purpose**: 모바일 최적화, 성능, 공유 메타데이터 등 모든 스토리에 걸치는 개선
 
-- [ ] T028 [P] Mobile responsive fine-tuning: verify all sections match Figma design on iPhone SE ~ iPhone 16 Pro Max viewport sizes in src/components/*.tsx
-- [ ] T029 [P] Add lazy loading for gallery images and below-the-fold content with loading="lazy" attribute in src/components/Gallery.tsx and src/components/Header.tsx
-- [ ] T030 [P] Add Open Graph meta tags (og:title, og:description, og:image) and favicon for KakaoTalk/SNS link sharing in index.html
-- [ ] T031 [P] Add smooth scroll behavior and section fade-in animations for polished UX in src/index.css and src/App.tsx
-- [ ] T032 Configure Vite build for production optimization (minification, image compression) and verify Vercel deployment in vite.config.ts
+- [X] T028 [P] Mobile responsive fine-tuning: verify all sections match Figma design on iPhone SE ~ iPhone 16 Pro Max viewport sizes in src/components/*.tsx
+- [X] T029 [P] Add lazy loading for gallery images and below-the-fold content with loading="lazy" attribute in src/components/Gallery.tsx and src/components/Header.tsx
+- [X] T030 [P] Add Open Graph meta tags (og:title, og:description, og:image) and favicon for KakaoTalk/SNS link sharing in index.html
+- [X] T031 [P] Add smooth scroll behavior and section fade-in animations for polished UX in src/index.css and src/App.tsx
+- [X] T032 Configure Vite build for production optimization (minification, image compression) and verify Vercel deployment in vite.config.ts
 
 ---
 
