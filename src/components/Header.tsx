@@ -8,7 +8,7 @@ export default function Header({ groomName, brideName }: HeaderProps) {
     <section className="relative w-full">
       <div className="relative w-full aspect-[3/4] overflow-hidden">
         <img
-          src="/images/main.jpg"
+          src={`${import.meta.env.BASE_URL}images/main.jpg`}
           alt={`${groomName} & ${brideName} 웨딩 사진`}
           className="w-full h-full object-cover"
         />

@@ -1,5 +1,7 @@
 import type { Invitation } from './types';
 
+const base = import.meta.env.BASE_URL;
+
 export const invitation: Invitation = {
   groomName: '지환',
   brideName: '인화',
@@ -92,12 +94,12 @@ export const invitation: Invitation = {
     { name: '장옥분', role: '신부 어머니', phone: '010-0000-0000' },
   ],
   galleryImages: [
-    { src: '/images/gallery-1.jpg', alt: '웨딩 사진 1', order: 1 },
-    { src: '/images/gallery-2.jpg', alt: '웨딩 사진 2', order: 2 },
-    { src: '/images/gallery-3.jpg', alt: '웨딩 사진 3', order: 3 },
-    { src: '/images/gallery-4.jpg', alt: '웨딩 사진 4', order: 4 },
-    { src: '/images/gallery-5.jpg', alt: '웨딩 사진 5', order: 5 },
-    { src: '/images/gallery-6.jpg', alt: '웨딩 사진 6', order: 6 },
+    { src: `${base}images/gallery-1.jpg`, alt: '웨딩 사진 1', order: 1 },
+    { src: `${base}images/gallery-2.jpg`, alt: '웨딩 사진 2', order: 2 },
+    { src: `${base}images/gallery-3.jpg`, alt: '웨딩 사진 3', order: 3 },
+    { src: `${base}images/gallery-4.jpg`, alt: '웨딩 사진 4', order: 4 },
+    { src: `${base}images/gallery-5.jpg`, alt: '웨딩 사진 5', order: 5 },
+    { src: `${base}images/gallery-6.jpg`, alt: '웨딩 사진 6', order: 6 },
   ],
   externalLinks: {
     rsvpFormUrl: import.meta.env.VITE_RSVP_FORM_URL || 'https://docs.google.com/forms',
