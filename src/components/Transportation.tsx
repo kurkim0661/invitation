@@ -14,14 +14,14 @@ const typeLabels: Record<string, string> = {
 
 const subwayLineColors: Record<string, string> = {
   '1호선': '#0052A4',
-  '2호선': '#009D3E',
+  '2호선': '#33A23D',
   '3호선': '#EF7C1C',
   '4호선': '#00A5DE',
   '5호선': '#996CAC',
   '6호선': '#CD7C2F',
   '7호선': '#747F00',
   '8호선': '#E6186C',
-  '9호선': '#BDB092',
+  '9호선': '#AA9872',
 };
 
 function getLineNumber(name: string): string | null {
@@ -29,17 +29,9 @@ function getLineNumber(name: string): string | null {
   return match ? match[1] : null;
 }
 
-function getStationInfo(name: string, detail: string): string {
-  const cleaned = name.replace(/\d호선\s*/, '');
-  return `${cleaned} ${detail}`;
-}
-
 function CopyIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2" className="inline-block text-navy-light">
-      <rect x="5" y="5" width="8" height="8" rx="1.5" />
-      <path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11" />
-    </svg>
+    <img src={`${import.meta.env.BASE_URL}images/copy-icon.svg`} alt="" width="16" height="16" className="inline-block" />
   );
 }
 
@@ -57,7 +49,10 @@ function SubwaySection({ lines }: { lines: TransportationType['lines'] }) {
       {lines.map((line, idx) => {
         const lineNum = getLineNumber(line.name);
         const color = lineNum ? subwayLineColors[lineNum] : '#666';
-        const info = getStationInfo(line.name, line.detail);
+        const station = line.name.replace(/\d호선\s*/, '');
+        const detailParts = line.detail.split(',');
+        const exit = `${station} ${detailParts[0]}`;
+        const rest = detailParts.slice(1).join(',');
         return (
           <div key={idx} className="flex items-center gap-3 justify-center">
             {lineNum && (
@@ -69,7 +64,7 @@ function SubwaySection({ lines }: { lines: TransportationType['lines'] }) {
               </span>
             )}
             <span className="text-[14px] text-text">
-              {info}
+              <span className="font-bold">{exit}</span>{rest ? `,${rest}` : ''}
             </span>
           </div>
         );
@@ -82,7 +77,7 @@ function ShuttleSection({ lines }: { lines: TransportationType['lines'] }) {
   return (
     <div className="space-y-2">
       {lines.map((line, idx) => (
-        <p key={idx} className="text-[14px] text-text text-center">
+        <p key={idx} className="text-[15px] text-text text-center">
           {line.detail}
         </p>
       ))}
@@ -106,12 +101,12 @@ function ParkingItem({ p }: { p: Parking }) {
   const { copy, copied } = useClipboard();
   return (
     <div className="text-center">
-      <p className="text-[14px] text-text">
+      <p className="text-[15px] text-text">
         <span className="font-bold">{p.name} ({p.capacity}대):</span>{' '}
         {p.address}
         <button
           onClick={() => copy(p.address)}
-          className="inline-block align-middle ml-1"
+          className="inline-block ml-1" style={{ verticalAlign: '1px' }}
           aria-label={`${p.address} 복사`}
         >
           {copied ? <CheckIcon /> : <CopyIcon />}
@@ -126,7 +121,7 @@ function ParkingItem({ p }: { p: Parking }) {
 
 function ParkingSection({ parking }: { parking: Parking[] }) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-1">
       {parking.map((p, idx) => (
         <ParkingItem key={idx} p={p} />
       ))}
@@ -140,7 +135,7 @@ export default function Transportation({ transportation, parking }: Transportati
       <div className="space-y-10">
         {transportation.map((t) => (
           <div key={t.type}>
-            <h3 className="text-[16px] font-bold text-text mb-4 text-center">
+            <h3 className="text-[16px] font-bold text-text mb-4 text-center opacity-70">
               {typeLabels[t.type]}
             </h3>
             {t.type === 'subway' && (
@@ -162,7 +157,7 @@ export default function Transportation({ transportation, parking }: Transportati
         ))}
 
         <div>
-          <h3 className="text-[16px] font-bold text-text mb-4 text-center">
+          <h3 className="text-[16px] font-bold text-text mb-4 text-center opacity-70">
             주차
           </h3>
           <ParkingSection parking={parking} />

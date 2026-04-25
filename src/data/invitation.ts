@@ -8,7 +8,7 @@ export const invitation: Invitation = {
   greeting:
     '언제나 손을 잡고 걷는 지금처럼\n앞으로의 모든 날도 함께 걸어가겠습니다.\n저희의 시작을 함께해 주시면 감사하겠습니다.',
   weddingDate: '2026-07-11T17:00:00+09:00',
-  weddingDateDisplay: '2026년 7월 11일 토요일 오후 5시',
+  weddingDateDisplay: '2026년 7월 11일 토요일, 오후 5시',
   venue: {
     name: '노블발렌티 삼성',
     address: '서울 강남구 봉은사로 637',
@@ -27,19 +27,6 @@ export const invitation: Invitation = {
             name: '2호선 삼성역',
             detail: '8번 출구, 도보 약 15분',
             walkMinutes: 15,
-          },
-        ],
-      },
-      {
-        type: 'bus',
-        lines: [
-          {
-            name: '3417번',
-            detail: '노블발렌티 정류장 하차, 8분 소요',
-          },
-          {
-            name: '강남01번',
-            detail: '노블발렌티 정류장 하차, 9분 소요',
           },
         ],
       },
@@ -86,12 +73,12 @@ export const invitation: Invitation = {
     },
   ],
   contacts: [
-    { name: '지환', role: '신랑', phone: '010-0000-0000' },
-    { name: '인화', role: '신부', phone: '010-0000-0000' },
-    { name: '김동희', role: '신랑 아버지', phone: '010-0000-0000' },
-    { name: '조진숙', role: '신랑 어머니', phone: '010-0000-0000' },
-    { name: '강대연', role: '신부 아버지', phone: '010-0000-0000' },
-    { name: '장옥분', role: '신부 어머니', phone: '010-0000-0000' },
+    { name: '지환', role: '신랑', phone: '010-9425-0661' },
+    { name: '인화', role: '신부', phone: '010-3301-3108' },
+    { name: '김동희', role: '신랑 아버지', phone: '010-5651-0661' },
+    { name: '조진숙', role: '신랑 어머니', phone: '010-9651-0661' },
+    { name: '강대연', role: '신부 아버지', phone: '010-8761-9108' },
+    { name: '장옥분', role: '신부 어머니', phone: '010-2651-3108' },
   ],
   galleryImages: [
     { src: `${base}images/gallery-1.jpg`, alt: '웨딩 사진 1', order: 1 },
@@ -100,9 +87,20 @@ export const invitation: Invitation = {
     { src: `${base}images/gallery-4.jpg`, alt: '웨딩 사진 4', order: 4 },
     { src: `${base}images/gallery-5.jpg`, alt: '웨딩 사진 5', order: 5 },
     { src: `${base}images/gallery-6.jpg`, alt: '웨딩 사진 6', order: 6 },
+    { src: `${base}images/gallery-7.jpg`, alt: '웨딩 사진 7', order: 7 },
+  ],
+  groomAccounts: [
+    { bank: '농협', number: '216-02-007282', holder: '김동희' },
+    { bank: '농협', number: '302-0461-9352-71', holder: '조진숙' },
+    { bank: '토스뱅크', number: '1000-1510-9525', holder: '김지환' },
+  ],
+  brideAccounts: [
+    { bank: '기업은행', number: '450-035996-01-018', holder: '강대연' },
+    { bank: '기업은행', number: '07819867701010', holder: '강인화' },
+    { bank: '기업은행', number: '11209651701019', holder: '장옥분' },
   ],
   externalLinks: {
-    rsvpFormUrl: import.meta.env.VITE_RSVP_FORM_URL || 'https://docs.google.com/forms',
+    rsvpFormUrl: 'https://forms.gle/6QvEacDEoZRcnR9D9',
     kakaoMapUrl: 'https://map.kakao.com/link/to/노블발렌티 삼성,37.5117,127.0601',
   },
 };

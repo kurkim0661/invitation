@@ -7,7 +7,7 @@ interface LocationProps {
 }
 
 export default function Location({ venue, kakaoMapUrl }: LocationProps) {
-  const { copy, copied } = useClipboard();
+  const { copy } = useClipboard();
 
   // Kakao static map with marker
   // MX/MY: WCONGNAMUL coordinates for 노블발렌티 삼성
@@ -19,22 +19,30 @@ export default function Location({ venue, kakaoMapUrl }: LocationProps) {
 
   return (
     <section className="px-8 py-12 bg-white">
-      <h2 className="text-center text-[14px] tracking-[0.3em] text-text-light mb-8">
+      {/* 14: LOCATION -> 17pt */}
+      <h2 className="text-center font-script text-text-light mb-8 italic" style={{ fontSize: '17px', letterSpacing: '0.07em' }}>
         LOCATION
       </h2>
-      <p className="text-center text-[16px] font-medium text-text mb-2">
+      {/* 15: 노블발렌티 삼성 -> 16pt */}
+      <p className="text-center text-[16px] font-medium text-text mb-2" style={{ fontFamily: 'Pretendard, sans-serif' }}>
         {venue.name}
       </p>
-      <div className="flex items-center justify-center gap-2 mb-6">
-        <p className="text-[13px] text-text-light">
-          {venue.address}
-        </p>
-        <button
-          onClick={() => copy(venue.address)}
-          className="px-2 py-1 text-[11px] border border-border rounded text-text-light transition-colors"
+      <div className="flex items-center justify-center mb-6">
+        <div
+          className="flex items-center gap-1.5 px-5 py-3 rounded-[8px]"
+          style={{ backgroundColor: '#F0F0F0' }}
         >
-          {copied ? '복사됨' : '복사'}
-        </button>
+          <p className="text-[14px]" style={{ color: '#3353A3', fontFamily: 'Pretendard, sans-serif' }}>
+            {venue.address}
+          </p>
+          <button
+            onClick={() => copy(venue.address)}
+            className="flex items-center transition-colors"
+            style={{ color: '#3353A3' }}
+          >
+            <img src={`${import.meta.env.BASE_URL}images/copy-icon.svg`} alt="복사" width="16" height="16" />
+          </button>
+        </div>
       </div>
 
       {/* Kakao Static Map with marker overlay */}
@@ -60,10 +68,10 @@ export default function Location({ venue, kakaoMapUrl }: LocationProps) {
           href={kakaoMapUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block text-[14px] tracking-wider rounded-[8px] border border-white transition-colors"
-          style={{ padding: '12px 32px', backgroundColor: 'transparent', color: '#666', boxShadow: '0 2px 6px rgba(0,0,0,0.08)' }}
+          className="inline-block text-[16px] text-text-light tracking-wider rounded-[10px] border border-white transition-colors"
+          style={{ width: '200px', padding: '14px 0', backgroundColor: 'transparent', boxShadow: '0 3px 10px rgba(0,0,0,0.12)', fontFamily: 'Pretendard, sans-serif' }}
         >
-          길찾기
+          카카오맵 길찾기
         </a>
       </div>
     </section>
