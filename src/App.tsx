@@ -10,6 +10,7 @@ import Rsvp from './components/Rsvp';
 import Gallery from './components/Gallery';
 import Location from './components/Location';
 import Transportation from './components/Transportation';
+import GiftMoney from './components/GiftMoney';
 
 function Section({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const { ref, inView } = useInView(0.1);
@@ -34,14 +35,13 @@ function App() {
         brideName={invitation.brideName}
       />
       <Section>
-        <Greeting
-          greeting={invitation.greeting}
-          dateDisplay={invitation.weddingDateDisplay}
-          venueName={invitation.venue.name}
-        />
+        <Greeting greeting={invitation.greeting} />
       </Section>
       <Section>
-        <Calendar weddingDate={invitation.weddingDate} />
+        <Calendar
+          weddingDateDisplay={invitation.weddingDateDisplay}
+          venueName={invitation.venue.name}
+        />
       </Section>
       <Section>
         <FamilyInfo
@@ -56,12 +56,18 @@ function App() {
         <Gallery images={invitation.galleryImages} />
       </Section>
       <Section>
-        <Location venue={invitation.venue} />
+        <Location venue={invitation.venue} kakaoMapUrl={invitation.externalLinks.kakaoMapUrl} />
       </Section>
       <Section>
         <Transportation
           transportation={invitation.venue.transportation}
           parking={invitation.venue.parking}
+        />
+      </Section>
+      <Section>
+        <GiftMoney
+          groomAccounts={invitation.groomAccounts}
+          brideAccounts={invitation.brideAccounts}
         />
       </Section>
       <ContactModal

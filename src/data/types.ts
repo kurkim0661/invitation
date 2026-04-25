@@ -9,6 +9,8 @@ export interface Invitation {
   contacts: Contact[];
   galleryImages: GalleryImage[];
   externalLinks: ExternalLinks;
+  groomAccounts: AccountInfo[];
+  brideAccounts: AccountInfo[];
 }
 
 export interface Family {
@@ -56,6 +58,12 @@ export interface GalleryImage {
   src: string;
   alt: string;
   order: number;
+}
+
+export interface AccountInfo {
+  bank: string;
+  number: string;
+  holder: string;
 }
 
 export interface ExternalLinks {

@@ -1,23 +1,17 @@
 interface GreetingProps {
   greeting: string;
-  dateDisplay: string;
-  venueName: string;
 }
 
-export default function Greeting({ greeting, dateDisplay, venueName }: GreetingProps) {
+export default function Greeting({ greeting }: GreetingProps) {
   return (
-    <section className="px-8 py-10 text-center">
-      <p className="font-serif text-[15px] leading-7 text-text-light whitespace-pre-line">
+    <section className="px-8 pb-10 text-center bg-white">
+      {/* 2: 언제나...감사하겠습니다 -> 14pt */}
+      <p
+        className="text-[14px] leading-[2.2] text-text tracking-wider whitespace-pre-line mx-auto"
+        style={{ maxWidth: '293px' }}
+      >
         {greeting}
       </p>
-      <div className="mt-8 space-y-1">
-        <p className="font-sans text-[15px] font-medium text-text">
-          {dateDisplay}
-        </p>
-        <p className="font-sans text-[14px] text-text-light">
-          {venueName}
-        </p>
-      </div>
     </section>
   );
 }

@@ -5,26 +5,57 @@ interface FamilyInfoProps {
   onContactClick: () => void;
 }
 
+function GuideDivider() {
+  return (
+    <img
+      src={`${import.meta.env.BASE_URL}images/guide-divider.png`}
+      alt=""
+      aria-hidden="true"
+      style={{ width: '217px', height: '32px' }}
+      className="mx-auto"
+    />
+  );
+}
+
 export default function FamilyInfo({ families, onContactClick }: FamilyInfoProps) {
   return (
-    <section className="px-8 py-10 text-center">
-      <div className="space-y-3">
+    <section className="px-8 py-14 text-center" style={{ backgroundColor: '#E9E5DE' }}>
+      {/* Top guide divider: 217 x 32 */}
+      <div className="mb-8">
+        <GuideDivider />
+      </div>
+
+      {/* Family information - font: 210 SoomyungjoOTF (inherited from body) */}
+      <div className="space-y-4 mb-8">
         {families.map((family) => (
-          <div key={family.side} className="font-sans text-[14px] text-text-light">
-            <span className="tracking-wider">
+          <div key={family.side} className="text-[18px] text-navy leading-relaxed">
+            <span className="tracking-wider font-bold">
               {family.fatherName}
-              <span className="text-[13px]">ㆍ</span>
+            </span>
+            <span className="mx-1 font-bold">·</span>
+            <span className="tracking-wider font-bold">
               {family.motherName}
             </span>
-            <span className="text-text-light text-[13px]">{family.relation}</span>
-            {' '}
-            <span className="text-text font-medium">{family.childName}</span>
+            <span className="text-[12px] text-navy-light font-normal">
+              {' '}{family.relation}{' '}
+            </span>
+            <span className="font-bold text-[18px]">
+              {family.childName}
+            </span>
           </div>
         ))}
       </div>
+
+      {/* Bottom guide divider: 217 x 32, flipped */}
+      <div className="mb-10" style={{ transform: 'scaleY(-1)' }}>
+        <GuideDivider />
+      </div>
+
+      {/* Contact button */}
       <button
         onClick={onContactClick}
-        className="mt-6 px-8 py-3 border border-border rounded-full text-[13px] font-sans text-text-light hover:bg-primary/5 transition-colors"
+        className="text-[16px] text-text-light tracking-wider rounded-[10px] border border-white transition-colors"
+        style={{ width: '200px', padding: '14px 0', backgroundColor: 'transparent', boxShadow: '0 3px 10px rgba(0,0,0,0.12)' }}
       >
         연락하기
       </button>
