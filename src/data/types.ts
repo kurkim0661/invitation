@@ -56,6 +56,7 @@ export interface Parking {
 
 export interface GalleryImage {
   src: string;
+  thumb: string;
   alt: string;
   order: number;
 }

@@ -12,61 +12,70 @@ function GalleryModal({ images, startIndex, onClose }: {
   onClose: () => void;
 }) {
   const [currentIndex, setCurrentIndex] = useState(startIndex);
-  const [offsetX, setOffsetX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [containerWidth, setContainerWidth] = useState(window.innerWidth);
+  const [transition, setTransition] = useState<'none' | 'slide-left' | 'slide-right'>('none');
   const touchStartX = useRef(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartY = useRef(0);
+  const isMultiTouch = useRef(false);
+  const isSwiping = useRef(false);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    const handleResize = () => setContainerWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
     return () => {
       document.body.style.overflow = '';
-      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
-  const goTo = useCallback((index: number) => {
-    if (index >= 0 && index < images.length) {
+  const goTo = useCallback((index: number, dir: 'slide-left' | 'slide-right') => {
+    if (index < 0 || index >= images.length) return;
+    setTransition(dir);
+    setTimeout(() => {
       setCurrentIndex(index);
-    }
+      setTransition('none');
+    }, 200);
   }, [images.length]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    setIsDragging(true);
+    if (e.touches.length > 1) {
+      isMultiTouch.current = true;
+      return;
+    }
+    isMultiTouch.current = false;
+    isSwiping.current = false;
     touchStartX.current = e.touches[0].clientX;
-    setOffsetX(0);
+    touchStartY.current = e.touches[0].clientY;
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
-    const diff = e.touches[0].clientX - touchStartX.current;
-    // Prevent overscroll at edges
-    if ((currentIndex === 0 && diff > 0) || (currentIndex === images.length - 1 && diff < 0)) {
-      setOffsetX(diff * 0.3);
-    } else {
-      setOffsetX(diff);
+    if (e.touches.length > 1) {
+      isMultiTouch.current = true;
     }
   };
 
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-    const threshold = 80;
-    if (offsetX < -threshold && currentIndex < images.length - 1) {
-      goTo(currentIndex + 1);
-    } else if (offsetX > threshold && currentIndex > 0) {
-      goTo(currentIndex - 1);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (isMultiTouch.current) {
+      isMultiTouch.current = false;
+      return;
     }
-    setOffsetX(0);
+    const diffX = touchStartX.current - e.changedTouches[0].clientX;
+    const diffY = touchStartY.current - e.changedTouches[0].clientY;
+    // Only swipe if horizontal movement is dominant and > 50px
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+      if (diffX > 0 && currentIndex < images.length - 1) {
+        goTo(currentIndex + 1, 'slide-left');
+      } else if (diffX < 0 && currentIndex > 0) {
+        goTo(currentIndex - 1, 'slide-right');
+      }
+    }
   };
 
+  const animStyle = transition === 'slide-left'
+    ? { opacity: 0, transform: 'translateX(-30px)', transition: 'all 0.2s ease' }
+    : transition === 'slide-right'
+    ? { opacity: 0, transform: 'translateX(30px)', transition: 'all 0.2s ease' }
+    : { opacity: 1, transform: 'translateX(0)', transition: 'all 0.2s ease' };
 
   return createPortal(
-    <div
-      className="fixed inset-0 z-50 bg-black flex flex-col"
-    >
+    <div className="fixed inset-0 z-50 bg-black flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3">
         <span className="text-white text-[14px]">
@@ -80,67 +89,51 @@ function GalleryModal({ images, startIndex, onClose }: {
         </button>
       </div>
 
-      {/* Image strip */}
+      {/* Single image */}
       <div
-        ref={containerRef}
-        className="flex-1 overflow-hidden relative"
+        className="flex-1 flex items-center justify-center overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={onClose}
       >
-        <div
-          className="flex h-full"
-          style={{
-            transform: `translateX(${-currentIndex * containerWidth + offsetX}px)`,
-            transition: isDragging ? 'none' : 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-            width: `${images.length * containerWidth}px`,
-          }}
-        >
-          {images.map((image, idx) => (
-            <div
-              key={idx}
-              className="flex items-center justify-center"
-              style={{ width: `${containerWidth}px`, flexShrink: 0 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-contain"
-                draggable={false}
-              />
-            </div>
-          ))}
-        </div>
+        <img
+          src={images[currentIndex].src}
+          alt={images[currentIndex].alt}
+          className="max-w-full max-h-full object-contain"
+          style={animStyle}
+          onClick={(e) => e.stopPropagation()}
+          draggable={false}
+        />
       </div>
-
-      {/* Navigation arrows (desktop) */}
-      {currentIndex > 0 && (
-        <button
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-white/70 text-4xl z-10"
-          onClick={(e) => { e.stopPropagation(); goTo(currentIndex - 1); }}
-        >
-          &#8249;
-        </button>
-      )}
-      {currentIndex < images.length - 1 && (
-        <button
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 text-4xl z-10"
-          onClick={(e) => { e.stopPropagation(); goTo(currentIndex + 1); }}
-        >
-          &#8250;
-        </button>
-      )}
     </div>,
     document.body
   );
 }
 
+const INITIAL_COUNT = 6;
+
+function usePreloadImages(images: GalleryImage[]) {
+  useEffect(() => {
+    images.forEach((img) => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = img.src;
+      document.head.appendChild(link);
+    });
+  }, [images]);
+}
+
 export default function Gallery({ images }: GalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState(false);
 
   const sortedImages = [...images].sort((a, b) => a.order - b.order);
+  const visibleImages = expanded ? sortedImages : sortedImages.slice(0, INITIAL_COUNT);
+
+  // 그리드에 썸네일을 보여주면서 원본을 백그라운드로 프리로드
+  usePreloadImages(sortedImages);
 
   return (
     <section className="px-8 py-12" style={{ backgroundColor: '#EEF1F7' }}>
@@ -151,14 +144,14 @@ export default function Gallery({ images }: GalleryProps) {
         GALLERY
       </h2>
       <div className="grid grid-cols-3 gap-1">
-        {sortedImages.map((image, idx) => (
+        {visibleImages.map((image, idx) => (
           <div
             key={idx}
             className="aspect-[3/4] overflow-hidden cursor-pointer"
             onClick={() => setSelectedIndex(idx)}
           >
             <img
-              src={image.src}
+              src={image.thumb}
               alt={image.alt}
               loading="lazy"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -166,6 +159,20 @@ export default function Gallery({ images }: GalleryProps) {
           </div>
         ))}
       </div>
+
+      {!expanded && sortedImages.length > INITIAL_COUNT && (
+        <div className="flex justify-center mt-4">
+          <button
+            onClick={() => setExpanded(true)}
+            className="text-[12px] text-gray-400 tracking-wider hover:text-gray-600 transition-colors"
+          >
+            더보기
+            <svg width="12" height="7" viewBox="0 0 12 7" fill="none" className="ml-1 inline-block">
+              <path d="M1 1L6 5.5L11 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      )}
 
       {selectedIndex !== null && (
         <GalleryModal

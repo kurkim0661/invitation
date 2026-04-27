@@ -80,15 +80,12 @@ export const invitation: Invitation = {
     { name: '강대연', role: '신부 아버지', phone: '010-8761-9108' },
     { name: '장옥분', role: '신부 어머니', phone: '010-2651-3108' },
   ],
-  galleryImages: [
-    { src: `${base}images/gallery-1.jpg`, alt: '웨딩 사진 1', order: 1 },
-    { src: `${base}images/gallery-2.jpg`, alt: '웨딩 사진 2', order: 2 },
-    { src: `${base}images/gallery-3.jpg`, alt: '웨딩 사진 3', order: 3 },
-    { src: `${base}images/gallery-4.jpg`, alt: '웨딩 사진 4', order: 4 },
-    { src: `${base}images/gallery-5.jpg`, alt: '웨딩 사진 5', order: 5 },
-    { src: `${base}images/gallery-6.jpg`, alt: '웨딩 사진 6', order: 6 },
-    { src: `${base}images/gallery-7.jpg`, alt: '웨딩 사진 7', order: 7 },
-  ],
+  galleryImages: Array.from({ length: 28 }, (_, i) => ({
+    src: `${base}images/gallery-${i + 1}.jpg`,
+    thumb: `${base}images/thumbs/gallery-${i + 1}.jpg`,
+    alt: `웨딩 사진 ${i + 1}`,
+    order: i + 1,
+  })),
   groomAccounts: [
     { bank: '토스뱅크', number: '1000-1510-9525', holder: '김지환' },
     { bank: '농협', number: '216-02-007282', holder: '김동희' },
