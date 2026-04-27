@@ -90,13 +90,13 @@ export const invitation: Invitation = {
     { src: `${base}images/gallery-7.jpg`, alt: '웨딩 사진 7', order: 7 },
   ],
   groomAccounts: [
+    { bank: '토스뱅크', number: '1000-1510-9525', holder: '김지환' },
     { bank: '농협', number: '216-02-007282', holder: '김동희' },
     { bank: '농협', number: '302-0461-9352-71', holder: '조진숙' },
-    { bank: '토스뱅크', number: '1000-1510-9525', holder: '김지환' },
   ],
   brideAccounts: [
-    { bank: '기업은행', number: '450-035996-01-018', holder: '강대연' },
     { bank: '기업은행', number: '07819867701010', holder: '강인화' },
+    { bank: '기업은행', number: '450-035996-01-018', holder: '강대연' },
     { bank: '기업은행', number: '11209651701019', holder: '장옥분' },
   ],
   externalLinks: {
