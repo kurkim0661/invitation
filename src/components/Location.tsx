@@ -7,7 +7,7 @@ interface LocationProps {
 }
 
 export default function Location({ venue, kakaoMapUrl }: LocationProps) {
-  const { copy } = useClipboard();
+  const { copy, copied } = useClipboard();
 
   // Kakao static map with marker
   // MX/MY: WCONGNAMUL coordinates for 노블발렌티 삼성
@@ -44,6 +44,12 @@ export default function Location({ venue, kakaoMapUrl }: LocationProps) {
           </button>
         </div>
       </div>
+
+      {copied && (
+        <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-black/70 text-white text-[13px] px-4 py-2 rounded-full" style={{ fontFamily: 'Pretendard, sans-serif' }}>
+          주소가 복사되었습니다
+        </div>
+      )}
 
       {/* Kakao Static Map with marker overlay */}
       <a href={mapLinkUrl} target="_blank" rel="noopener noreferrer" className="block relative">

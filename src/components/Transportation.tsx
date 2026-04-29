@@ -58,12 +58,12 @@ function SubwaySection({ lines }: { lines: TransportationType['lines'] }) {
             {lineNum && (
               <span
                 className="text-[13px] text-white px-2 py-0.5 rounded-sm font-medium whitespace-nowrap"
-                style={{ backgroundColor: color }}
+                style={{ backgroundColor: color, fontFamily: 'Pretendard, sans-serif' }}
               >
                 {lineNum}
               </span>
             )}
-            <span className="text-[14px] text-text">
+            <span className="text-[14px] text-text" style={{ fontFamily: 'Pretendard, sans-serif' }}>
               <span className="font-bold">{exit}</span>{rest ? `,${rest}` : ''}
             </span>
           </div>
@@ -77,7 +77,7 @@ function ShuttleSection({ lines }: { lines: TransportationType['lines'] }) {
   return (
     <div className="space-y-2">
       {lines.map((line, idx) => (
-        <p key={idx} className="text-[15px] text-text text-center">
+        <p key={idx} className="text-[15px] text-text text-center" style={{ fontFamily: 'Pretendard, sans-serif' }}>
           {line.detail}
         </p>
       ))}
@@ -101,7 +101,7 @@ function ParkingItem({ p }: { p: Parking }) {
   const { copy, copied } = useClipboard();
   return (
     <div className="text-center">
-      <p className="text-[15px] text-text">
+      <p className="text-[15px] text-text" style={{ fontFamily: 'Pretendard, sans-serif' }}>
         <span className="font-bold">{p.name} ({p.capacity}대):</span>{' '}
         {p.address}
         <button

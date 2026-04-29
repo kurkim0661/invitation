@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { invitation } from './data/invitation';
 import { useInView } from './hooks/useInView';
 import Header from './components/Header';
-import Greeting from './components/Greeting';
 import Calendar from './components/Calendar';
 import FamilyInfo from './components/FamilyInfo';
 import ContactModal from './components/ContactModal';
@@ -11,6 +10,7 @@ import Gallery from './components/Gallery';
 import Location from './components/Location';
 import Transportation from './components/Transportation';
 import GiftMoney from './components/GiftMoney';
+import BgmPlayer from './components/BgmPlayer';
 
 function Section({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const { ref, inView } = useInView(0.1);
@@ -30,13 +30,12 @@ function App() {
 
   return (
     <div className="mx-auto max-w-[430px] min-h-screen bg-background">
+      <BgmPlayer />
       <Header
         groomName={invitation.groomName}
         brideName={invitation.brideName}
+        greeting={invitation.greeting}
       />
-      <Section>
-        <Greeting greeting={invitation.greeting} />
-      </Section>
       <Section>
         <Calendar
           weddingDateDisplay={invitation.weddingDateDisplay}
